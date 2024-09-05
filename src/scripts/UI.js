@@ -72,6 +72,7 @@ function createDayModuleElem(moduleData) {
 
 function renderIndayModules(data) {
   const indayContainer = document.querySelector(".main-content .inday-info");
+  indayContainer.innerHTML = "";
   data.forEach((dayData) => {
     const dateModule = createDayModuleElem({
       datetime: format(
@@ -101,4 +102,30 @@ function renderHomepage(content) {
   renderContent(content);
 }
 
-export { renderContent, renderHomepage };
+function updateInfoModule(newInfo) {
+  const headingInfo = document.querySelector(".main-content .heading-info");
+  Object.entries(newInfo).forEach(([key, value]) => {
+    const dataModule = headingInfo.querySelector(`.${key}`);
+    if (dataModule !== null) {
+      const text = dataModule.querySelector(".primary-text .text");
+      const unit = dataModule.querySelector(".primary-text .unit");
+      const description = dataModule.querySelector(".description");
+
+      text.textContent = value.value;
+      unit.textContent = value.unit;
+      description.textContent = value.description;
+    }
+  });
+}
+
+function updateIndayModules(newIndays) {
+  renderIndayModules(newIndays);
+}
+
+function updateContent(newContent) {
+  setActiveIcon(newContent.currentConditions.icon);
+  updateInfoModule(newContent.currentConditions);
+  updateIndayModules(newContent.inday);
+}
+
+export { renderContent, renderHomepage, updateContent };
