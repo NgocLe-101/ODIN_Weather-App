@@ -235,7 +235,7 @@ body {
   padding: 1rem;
 }
 
-.main-content .loader {
+.fill-content {
   position: absolute;
   top: 0;
   left: 0;
@@ -251,6 +251,21 @@ body {
     visibility 0.75;
 }
 
+.error-message-wrapper {
+  flex-direction: column;
+  z-index: 99;
+}
+
+.error-message-wrapper svg {
+  height: 40%;
+  width: 40%;
+  fill: rgb(235, 63, 63);
+}
+
+.error-message-wrapper .message {
+  width: 60%;
+}
+
 .loader::before {
   content: "";
   width: 75px;
@@ -261,7 +276,7 @@ body {
   animation: loading 0.75s ease infinite;
 }
 
-.loader.hidden {
+.hidden {
   opacity: 0;
   visibility: hidden;
 }
@@ -359,7 +374,7 @@ body {
   content: "°";
 }
 
-@media (max-width: 1090px) {
+@media all and (max-width: 1090px) {
   .header {
     flex-direction: column;
   }
@@ -379,5 +394,11 @@ body {
 
   .heading-info .icon-wrapper {
     /* grid-column: span 2; */
+  }
+}
+
+@media all and (max-width: 550px) {
+  .header .user-info-container > *:not(.user-avatar) {
+    display: none;
   }
 }

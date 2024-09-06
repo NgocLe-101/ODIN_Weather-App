@@ -140,4 +140,17 @@ function setActiveLoader(state) {
   }
 }
 
-export { renderContent, renderHomepage, updateContent, setActiveLoader };
+function toggleErrorScreen(state) {
+  const errorScreen = document.querySelector(
+    ".main-content .error-message-wrapper"
+  );
+  errorScreen.classList.toggle("hidden", state);
+}
+
+export {
+  renderContent,
+  renderHomepage,
+  updateContent,
+  setActiveLoader,
+  toggleErrorScreen,
+};

@@ -4,10 +4,13 @@ async function getData(locate = "hanoi") {
   const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${locate}?key=${API_KEY}`;
   try {
     const response = await fetch(url, { mode: "cors" });
-    const json = await response.json();
-    return json;
+    if (response.ok) {
+      const json = await response.json();
+      return json;
+    }
+    throw new Error(`Error ${response.status}`);
   } catch (err) {
-    console.log(err);
+    return Promise.reject(err);
   }
 }
 

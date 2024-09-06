@@ -8,6 +8,9 @@ export default class App {
       .then((data) => {
         return manipulateAPI(data);
       })
+      .catch((err) => {
+        console.error(err);
+      })
       .then((content) => {
         renderHomepage(content);
         initEventListeners();
