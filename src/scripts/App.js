@@ -1,5 +1,5 @@
 import { getData, manipulateAPI } from "./API";
-import { renderHomepage } from "./UI";
+import { renderHomepage, setActiveLoader } from "./UI";
 import { initEventListeners } from "./EventManager";
 
 export default class App {
@@ -9,9 +9,9 @@ export default class App {
         return manipulateAPI(data);
       })
       .then((content) => {
-        console.log(content);
         renderHomepage(content);
         initEventListeners();
+        setActiveLoader(false);
       })
       .catch((err) => {
         console.log(err);

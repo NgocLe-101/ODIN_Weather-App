@@ -130,4 +130,14 @@ function updateContent(newContent) {
   updateIndayModules(newContent.inday);
 }
 
-export { renderContent, renderHomepage, updateContent };
+function setActiveLoader(state) {
+  const loader = document.querySelector(".main-content .loader");
+  if (state) {
+    // if state === true means open then loading animation
+    loader.classList.remove("hidden");
+  } else {
+    loader.classList.add("hidden");
+  }
+}
+
+export { renderContent, renderHomepage, updateContent, setActiveLoader };
