@@ -28,7 +28,7 @@ function createInfoModuleElem(moduleData) {
 
 function renderInfoModule(data) {
   const moduleList = ["location", "temparature", "humidity", "windSpeed"];
-  const headingInfo = document.querySelector(".main-content .heading-info");
+  const headingInfo = document.querySelector(".main-content .heading-modules");
   moduleList.forEach((module) => {
     const moduleElem = createInfoModuleElem({
       moduleClassName: module,
@@ -103,9 +103,11 @@ function renderHomepage(content) {
 }
 
 function updateInfoModule(newInfo) {
-  const headingInfo = document.querySelector(".main-content .heading-info");
+  const headingModules = document.querySelector(
+    ".main-content .heading-modules"
+  );
   Object.entries(newInfo).forEach(([key, value]) => {
-    const dataModule = headingInfo.querySelector(`.${key}`);
+    const dataModule = headingModules.querySelector(`.${key}`);
     if (dataModule !== null) {
       const text = dataModule.querySelector(".primary-text .text");
       const unit = dataModule.querySelector(".primary-text .unit");
